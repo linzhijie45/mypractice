@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit">
+    <meta http-equiv="X-FRAME-OPTIONS" content="DENY"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <title>练习1~4</title>
+    <style type="text/css">
+    .t3{
+        border:5px solid red;
+        background-color:green;}
+    .t3:hover{
+        border:5px solid black;
+        background-color:yellow;}
+    .t4 ul{  
+            list-style-type: none;  
+  
+        }  
+  
+        .t4 ul li{  
+  
+            float:left;  
+  
+            /*以下设置仅为方便查看效果*/  
+            width:80px;  
+            height:20px;  
+            border:1px solid black;  
+            text-align: center;  
+        }  
+  
+        .t4 ul li ul{  
+            display: none;  
+        }  
+  
+        .t4 li:hover ul{  
+            display:block;  
+        }  
+
+    </style>
+</head>
+<body>
+     <!--1.带图标和文字的按钮-->
+    <div class="t1"><button type="button"><img src="images/tubiao.png">点我!</button>
+    </div>
+    <!--2.实现一个带下拉框的选择按钮-->
+    <div class="t2"><select>
+    <option value="A">A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    </select> 
+    </div>
+    <!--3.实现一个框框的显示-->
+    <div class="t3" >框框</div>
+    <!--4.实现一个二级菜单-->
+    <div class="t4">  
+    <ul>  
+            <li style="position: relative;">A
+                <ul style="position:absolute;left:-40px;
+    top:20px;">  
+                            <li>A1</li>  
+                            <li>A2</li>  
+                            <li>A3</li>  
+                </ul>  
+            </li>  
+            <li>B</li>  
+            <li>C</li>  
+    </ul>  
+    </div> 
+    
+</body>
+</html>

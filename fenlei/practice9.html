@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="renderer" content="webkit">
+    <meta http-equiv="X-FRAME-OPTIONS" content="DENY"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <title>练习9</title>
+</head>
+<body>
+
+<canvas id="myCanvas" width="500" height="400" style="border:1px solid #c3c3c3;position:absolute;"></canvas>
+<div Id="cover" width="30" height="30" style="padding:30px; position:absolute;z-index: 1100;"></div>
+<script type="text/javascript">
+    var X=30;
+    var Y=30;
+       /*画圆*/
+    var cxt=document.getElementById("myCanvas").getContext("2d");
+    function drawImg(){
+    cxt.clearRect(0,0,500,400);
+    cxt.fillStyle="#FF0000";
+    cxt.beginPath();
+    cxt.arc(X,Y,30,0,Math.PI*2,true);
+    cxt.closePath();
+    cxt.fill();
+    }
+    window.onload=function(){
+        setInterval(drawImg,1);}
+   
+    /*鼠标移动*/
+    var divObj=document.getElementById("cover");
+    var moveFlag=false;
+    var clickFlag=false;
+        divObj.onmousedown=function(e){
+        moveFlag=true;
+        clickFlag=true;
+        var clickEvent=window.event||e;
+        var mwidth=clickEvent.clientX-divObj.offsetLeft;
+        var mheight=clickEvent.clientY-divObj.offsetTop;
+        document.onmousemove=function(e){
+            clickFlag=false;
+            var moveEvent=window.event||e;
+            if(moveFlag){
+                divObj.style.left=moveEvent.clientX-mwidth+"px";
+                divObj.style.top=moveEvent.clientY-mheight+"px";
+    //             将鼠标坐标传给Canvas中的图像
+                X=moveEvent.clientX-mwidth;
+                Y=moveEvent.clientY-mheight;
+    //              下面四个条件为限制div以及图像的活动边界
+                if(moveEvent.clientX<=mwidth){
+                    divObj.style.left=0+"px";
+                    X=0;
+                }
+                if(parseInt(divObj.style.left)+divObj.offsetWidth >=500){
+                    divObj.style.left=500 - divObj.offsetWidth+"px";
+                    X=500 - divObj.offsetWidth;
+                }
+                if(moveEvent.clientY<=mheight){
+                    divObj.style.top=0+"px";
+                    Y=0;
+                }
+                if(parseInt(divObj.style.top)+divObj.offsetHeight>=400){
+                    divObj.style.top=400-divObj.offsetHeight+"px";
+                    Y=400-divObj.offsetHeight;
+                }
+                divObj.onmouseup=function(){
+                    moveFlag=false;
+                    if(clickFlag){
+                        alert("点击生效");
+                    }
+                }
+            }
+        }
+    };
+  
+   
+</script>
+
+</body>
+</html>
